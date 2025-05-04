@@ -1,0 +1,359 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formula | Personalized Supplement Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+        <div class="hero">
+            <img src="{{ url_for('static', filename='images/vionora.png') }}" alt="Vionora Logo" class="logo">
+            <h1>Build Your Personalized Supplement Routine</h1>
+            <p>Whether you're solving an issue or simply looking to optimize your wellbeing, this quiz is designed to create a supplement plan that supports your unique goals.</p>
+        </div>
+    <div class="container">
+        <form action="/results" method="POST">
+            <!-- 🌙 Sleep -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Sleep & Recovery</button>
+                <div class="section-content collapsed">
+                  <h2>Sleep & Recovery</h2>
+            <label>How would you rate your sleep quality?</label>
+            <select name="sleep_quality" required>
+                <option value="good">Good</option>
+                <option value="average">Average</option>
+                <option value="poor">Poor</option>
+            </select>
+
+            <label>What best describes your sleep struggles?</label>
+            <select name="sleep_issues" required>
+                <option value="none">No issues</option>
+                <option value="falling_asleep">Trouble falling asleep</option>
+                <option value="waking_up">Waking up during the night</option>
+                <option value="waking_early">Waking up too early</option>
+                <option value="racing_mind">Restless / anxious mind at bedtime</option>
+            </select>
+
+            <label>How many hours of sleep do you typically get per night?</label>
+            <select name="sleep_hours" required>
+                <option value="under_5">Less than 5 hours</option>
+                <option value="5_to_7">5–7 hours</option>
+                <option value="7_to_9">7–9 hours</option>
+                <option value="over_9">More than 9 hours</option>
+            </select>
+
+            <label>Do you consume caffeine?</label>
+            <select name="caffeine" required>
+                <option value="none">Rarely</option>
+                <option value="low">1–2 servings daily (before 2 PM)</option>
+                <option value="medium">1–2 servings daily (afternoon/evening)</option>
+                <option value="high">3+ servings daily</option>
+            </select>
+
+        </div>
+    </div>
+
+            <!-- 😵‍💫 Stress -->
+
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Stress & Mood</button>
+                <div class="section-content collapsed">
+                  <h2>Stress & Mood</h2>
+            <label>How would you describe your daily stress levels?</label>
+            <select name="stress_level" required>
+                <option value="low">Low</option>
+                <option value="medium">Moderate</option>
+                <option value="high">High / Frequent overwhelm</option>
+            </select>
+
+            <label>How does stress usually show up for you?</label>
+            <select name="stress_response" required>
+                <option value="mental">Mental overwhelm / racing thoughts</option>
+                <option value="muscle">Physical tension / tight muscles</option>
+                <option value="fatigue">Fatigue / burnout</option>
+                <option value="digestive">Digestive issues when stressed</option>
+                <option value="mood">Mood swings / irritability</option>
+            </select>
+
+            <label>When do you feel most stressed?</label>
+            <select name="stress_time" required>
+                <option value="morning">Morning</option>
+                <option value="midday">Midday</option>
+                <option value="evening">Evening</option>
+                <option value="all_day">All day</option>
+            </select>
+
+            <label>Do you currently practice any relaxation techniques?</label>
+            <select name="relaxation" required>
+                <option value="none">None</option>
+                <option value="meditation">Meditation / breathwork</option>
+                <option value="yoga">Yoga or stretching</option>
+                <option value="journaling">Journaling</option>
+            </select>
+
+        </div>
+    </div>
+
+            <!-- ⚡ Energy -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Energy & Focus</button>
+                <div class="section-content collapsed">
+                    <h2>Energy & Focus</h2>
+                    <label>When do you feel most energized during the day?</label>
+                    <select name="energy_peak" required>
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                        <option value="rarely">Rarely feel energized</option>
+                    </select>
+            
+                    <label>Do you experience daily energy crashes?</label>
+                    <select name="energy_crash" required>
+                        <option value="yes">Yes, regularly</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="no">No</option>
+                    </select>
+            
+                    <label>How often do you exercise?</label>
+                    <select name="exercise_frequency" required>
+                        <option value="rarely">Rarely</option>
+                        <option value="1_to_2">1–2 times per week</option>
+                        <option value="3_to_5">3–5 times per week</option>
+                        <option value="daily">Daily</option>
+                    </select>
+            
+                    <label>What type of exercise do you do most often?</label>
+                    <select name="exercise_type" required>
+                        <option value="cardio">Cardio / HIIT</option>
+                        <option value="strength">Strength training / weights</option>
+                        <option value="yoga">Yoga / pilates / stretching</option>
+                        <option value="walking">Walking / light activity</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 🌀 Digestion -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Digestive Health</button>
+                <div class="section-content collapsed">
+                    <h2>Digestive Health</h2>
+                    <label>How often do you experience bloating or digestive discomfort?</label>
+                    <select name="digestion" required>
+                        <option value="rarely">Rarely</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="frequently">Frequently</option>
+                    </select>
+            
+                    <label>Do you experience constipation, diarrhea, or irregular bowel movements?</label>
+                    <select name="bowel_issues" required>
+                        <option value="yes">Yes, regularly</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="no">No</option>
+                    </select>
+            
+                    <label>Do you currently take probiotics, prebiotics, or digestive enzymes?</label>
+                    <select name="probiotics" required>
+                        <option value="daily">Yes, daily</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 🥗 Diet -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Diet & Nutrition</button>
+                <div class="section-content collapsed">
+                    <h2>Diet & Nutrition</h2>
+                    <label>How would you describe your diet?</label>
+                    <select name="diet" required>
+                        <option value="balanced">Balanced (includes animal products)</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="mostly_plant">Mostly plant-based</option>
+                    </select>
+            
+                    <label>Do you avoid or limit any of the following?</label>
+                    <select name="diet_restrictions" required>
+                        <option value="none">None</option>
+                        <option value="red_meat">Red meat</option>
+                        <option value="fish">Fish / seafood</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="gluten">Gluten</option>
+                    </select>
+            
+                    <label>How often do you eat leafy greens or vegetables daily?</label>
+                    <select name="veggies" required>
+                        <option value="rarely">Rarely</option>
+                        <option value="once">Once per day</option>
+                        <option value="twice_plus">2+ servings daily</option>
+                    </select>
+            
+                    <label>Do you currently take any supplements?</label>
+                    <select name="current_supplements" required>
+                        <option value="yes">Yes (I can list them)</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+            
+
+            <!-- ✨ Skin -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Skin Health</button>
+                <div class="section-content collapsed">     
+            <h2>Skin Health</h2>
+            <label>What are your primary skin concerns?</label>
+            <select name="skin_concerns" required>
+                <option value="none">None</option>
+                <option value="acne">Acne / breakouts</option>
+                <option value="dryness">Dryness / flakiness</option>
+                <option value="redness">Redness / sensitivity</option>
+                <option value="dullness">Uneven tone / dullness</option>
+            </select>
+
+            <label>How would you describe your skin type?</label>
+            <select name="skin_type" required>
+                <option value="oily">Oily</option>
+                <option value="dry">Dry</option>
+                <option value="combo">Combination</option>
+                <option value="normal">Normal</option>
+            </select>
+
+                </div>
+                </div>
+
+            <!-- 🩸 Hormonal Health -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Hormonal Health</button>
+                <div class="section-content collapsed">
+            <h2>Hormonal Health</h2>
+            <label>Do you experience PMS, mood swings, or hormone-related symptoms?</label>
+            <select name="hormonal_issues" required>
+                <option value="yes">Yes, regularly</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="no">No / Not applicable</option>
+            </select>
+
+            <label>Do you use hormonal birth control?</label>
+            <select name="birth_control" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="prefer_not_say">Prefer not to say</option>
+            </select>
+        </div>
+        </div>
+
+            <!-- 🌱 Self-Optimization -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Self-Optimization</button>
+                <div class="section-content collapsed">
+            <h2>Wellness Goals & Self-Optimization</h2>
+            <label>What are your current wellness goals?</label>
+            <select name="wellness_goals" required>
+                <option value="improve_sleep">Improve sleep quality</option>
+                <option value="manage_stress">Manage stress more effectively</option>
+                <option value="boost_energy">Boost daily energy levels</option>
+                <option value="focus_brain">Support focus / cognitive performance</option>
+                <option value="gut_health">Improve digestion and gut health</option>
+                <option value="balance_hormones">Balance hormones / support menstrual health</option>
+                <option value="immune_support">Enhance immune support</option>
+                <option value="skin_health">Improve skin health / glow</option>
+                <option value="performance_recovery">Support athletic performance / recovery</option>
+                <option value="longevity">Longevity / healthy aging</option>
+                <option value="general_maintenance">General health maintenance</option>
+            </select>
+
+            <label>How would you prefer your supplement routine to feel?</label>
+            <select name="routine_style" required>
+                <option value="minimal">Simple and minimal (just the essentials)</option>
+                <option value="balanced">Balanced and well-rounded</option>
+                <option value="comprehensive">Comprehensive / performance-focused</option>
+                <option value="targeted">Targeted (for specific goals)</option>
+            </select>
+                </div>
+                </div>
+
+            <!-- 🧘‍♀️ Lifestyle & Daily Habits -->
+            <div class="quiz-section">
+                <button class="toggle-btn" type="button">▼ Lifestyle & Daily Habits</button>
+                <div class="section-content collapsed">
+        
+            <h2>Lifestyle & Daily Habits</h2>
+
+            <label>Do you spend time on screens (phone, laptop, TV) right before bed?</label>
+            <select name="screen_time" required>
+                <option value="always">Yes, always</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>How many hours per day do you typically spend on screens (work, phone, TV)?</label>
+            <select name="daily_screen_hours" required>
+                <option value="under_4">Less than 4 hours</option>
+                <option value="4_to_8">4–8 hours</option>
+                <option value="over_8">More than 8 hours</option>
+            </select>
+
+            <label>How often are you outdoors in natural sunlight?</label>
+            <select name="sunlight_exposure" required>
+                <option value="rarely">Rarely</option>
+                <option value="few_times_week">A few times a week</option>
+                <option value="daily">Daily</option>
+            </select>
+
+            <label>Do you work night shifts or have irregular work hours?</label>
+            <select name="shift_work" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>How consistent are you with taking supplements or sticking to wellness routines?</label>
+            <select name="supplement_consistency" required>
+                <option value="very_consistent">Very consistent — daily habits are easy for me</option>
+                <option value="somewhat_consistent">Somewhat consistent — I try my best</option>
+                <option value="struggle">I struggle with consistency — looking for easy ways to stay on track</option>
+            </select>
+
+            <label>Do you prefer plant-based or natural supplement options?</label>
+            <select name="plant_based_preference" required>
+                <option value="yes">Yes, prefer plant-based</option>
+                <option value="no_preference">No preference</option>
+                <option value="open_to_all">Open to all</option>
+            </select>
+
+            <label>Would you prefer supplement recommendations that are:</label>
+            <select name="routine_focus" required>
+                <option value="fast_acting">Fast-acting support</option>
+                <option value="long_term">Long-term health / preventative support</option>
+                <option value="balanced">A balance of both</option>
+            </select>
+            </div>
+            </div>
+
+            <button type="submit">Get My Personalized Plan</button>
+        </form>
+    </div>
+        <script>
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    event.preventDefault(); // 🚫 Prevent form submission
+            
+                    const content = btn.nextElementSibling;
+                    content.classList.toggle('collapsed');
+            
+                    // Toggle arrow direction
+                    if (btn.textContent.includes('▼')) {
+                        btn.textContent = btn.textContent.replace('▼', '▲');
+                    } else {
+                        btn.textContent = btn.textContent.replace('▲', '▼');
+                    }
+                });
+            });
+            </script>
+            
+</body>
+</html>

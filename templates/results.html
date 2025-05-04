@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Personalized Supplement Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="molecule-bg">
+        <div class="container">
+            <h1>Your Personalized Supplement Recommendations</h1>
+        </div>
+        </div>
+        {% if results %}
+            {% for item in results %}
+            <div class="supplement-card">
+                <div class="supplement-name">{{ item.name }}</div>
+                <div class="category">{{ item.category }}</div>
+                <div class="benefit"><strong>Benefit:</strong> {{ item.benefit }}</div>
+                <div class="usage"><strong>How to Use:</strong> {{ item.usage }}</div>
+                <div class="explanation">
+                    <strong>Why This Supplement?</strong><br>
+                    {{ item.explanation }}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No recommendations were generated based on your input. Please try again.</p>
+    {% endif %}
+
+        <div class="back-button">
+            <a href="/">Take the Quiz Again</a>
+        </div>
+    </div>
+</body>
+</html>
